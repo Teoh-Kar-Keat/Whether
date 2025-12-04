@@ -1,56 +1,49 @@
-中央氣象局天氣資料下載、儲存與可視化系統
-🧩 一、系統目的與背景
+# 🌾 天氣資料下載與農業應用系統 — 完整報告（Markdown）
 
-本系統的目的是自動化取得中央氣象局（CWA）開放資料，
-將每日各地區天氣預報整理後存進 SQLite 資料庫，
-再透過 Streamlit 提供互動式下拉選單與曲線圖，
-讓使用者更直觀地查詢未來數日天氣趨勢。
+## 📌 1. 系統簡介
 
-此架構非常適合農業應用，例如農民可以透過曲線圖快速了解溫度變化，協助安排灌溉、防霜、防雨措施。
+本系統透過中央氣象局 OpenData API，自動下載最新的農業天氣預報資料（資料集代碼：F-A0010-001），解析後存入 SQLite3 資料庫，並以 Streamlit 建立互動式儀表板，讓使用者能快速查詢每日各地天氣資訊。
 
-📡 二、系統流程
-整體流程圖
-中央氣象局 API(JSON)
-        ↓
-    Python requests
-        ↓
-    解析 JSON
-        ↓
-    SQLite3 (data.db)
-        ↓
-    Streamlit 前端
-  ↓       ↓       ↓
-下拉選單  表格    曲線圖
+本系統特別適用於農業領域，使農民能清楚掌握天氣趨勢，協助調整灌溉、施肥、採收、病蟲害防治等重要農務決策。
 
-🧱 三、系統功能說明（依區塊拆解）
-1️⃣ 下載中央氣象局 JSON 資料
-📌 使用 F-A0010-001（農業天氣預報） API
+---
 
-程式碼：
+# 📦 2. 系統整體架構
 
-r = requests.get(URL)
-data = r.json()
+```
+使用者 ↔ Streamlit 前端介面
+              │
+              ▼
+         SQLite3 資料庫 (data.db)
+              │
+              ▼
+        fetch_to_db.py
+  (下載→解析→資料清洗→寫入資料庫)
+              │
+              ▼
+  中央氣象局 CWA OpenData API
 
-⭐ 功能說明：
+```
 
-向中央氣象局伺服器發出 GET 請求
+---
 
-回傳 JSON 格式資料，包含：
+# 🌐 3. 使用資料來源
 
-地區名稱（locationName）
+| 項目 | 連結 |
+| --- | --- |
+| CWA 官網溫度觀測頁 | https://www.cwa.gov.tw/V8/C/W/OBS_Temp.html |
+| CWA OpenData 登入頁 | https://opendata.cwa.gov.tw/userLogin |
+| API Key | `CWA-1FFDDAEC-161F-46A3-BE71-93C32C52829F` |
+| JSON 資料集 | https://opendata.cwa.gov.tw/dataset/forecast/F-A0010-001 |
+| 下載 API（本系統使用） | https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/F-A0010-001?Authorization=CWA-1FFDDAEC-161F-46A3-BE71-93C32C52829F&downloadType=WEB&format=JSON |
 
-天氣現象（Wx）
+---
 
-最高溫（MaxT）
+# 🧩 4. JSON 資料解析流程
 
-最低溫（MinT）
+下載後的 JSON 結構如下（簡化版）：
 
-預報7天資料
-
-2️⃣ JSON 資料解析
-
-CWA 的 JSON 結構如下（實際節錄）：
-
+```json
 {
   "cwaopendata": {
     "resources": {
@@ -60,11 +53,11 @@ CWA 的 JSON 結構如下（實際節錄）：
             "weatherForecasts": {
               "location": [
                 {
-                  "locationName": "北部地區",
+                  "locationName": "臺中市",
                   "weatherElements": {
-                    "Wx": {"daily": [...]},
-                    "MaxT": {"daily": [...]},
-                    "MinT": {"daily": [...]}
+                    "Wx": { "daily": [...] },
+                    "MaxT": { "daily": [...] },
+                    "MinT": { "daily": [...] }
                   }
                 }
               ]
@@ -76,194 +69,189 @@ CWA 的 JSON 結構如下（實際節錄）：
   }
 }
 
-⭐ 解析程式功能：
+```
 
-找到 location 清單
+本系統會抓取以下欄位：
 
-針對每個地區取得：
+- 地區名稱（locationName）
+- 每日天氣敘述（Wx → daily → weather）
+- 每日最低溫（MinT → daily → temperature）
+- 每日最高溫（MaxT → daily → temperature）
+- 日期（dataDate）
 
-地區名（region）
+---
 
-每日日期（date）
+# 🗄 5. SQLite3 資料庫設計
 
-每日天氣描述（weather）
+## 📌 資料庫名稱
 
-最高溫（temp_high）
-
-最低溫（temp_low）
-
-每筆資料最後會變成：
-
-北部地區 | 2025-12-04 | 多雲時晴 | 15~21
-
-3️⃣ 建立 SQLite 資料庫（data.db）
-
-資料庫名稱：
-
+```
 data.db
 
+```
 
-資料表設計：
+## 📌 資料表結構 — weather
 
-CREATE TABLE weather (
+```sql
+CREATE TABLE IF NOT EXISTS weather (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    region TEXT,
+    location TEXT,
     date TEXT,
-    weather TEXT,
-    temp_low REAL,
-    temp_high REAL
+    min_temp REAL,
+    max_temp REAL,
+    description TEXT
 );
 
-⭐ 設計理念：
+```
 
-region：可查詢特定區域
+### 欄位解釋
 
-date：可繪製折線圖
+| 欄位 | 說明 |
+| --- | --- |
+| id | 主鍵 |
+| location | 地區名稱，例如「臺中市」 |
+| date | 預報日期 |
+| min_temp | 最低溫度 |
+| max_temp | 最高溫度 |
+| description | 天氣敘述，例如「多雲短暫雨」 |
 
-weather：可做天氣文字摘要
+---
 
-temp_low / temp_high：可視覺化溫度曲線
+# 🧪 6. 資料下載與儲存程式 `fetch_to_db.py`
 
-SQLite 的優點：
+```python
+import requests
+import sqlite3
 
-優點	說明
-輕量	一個 data.db 就能存所有資料
-零配置	不需安裝 MySQL, PostgreSQL
-可攜性	系統可直接上課 demo 或跨電腦使用
-適合中小型資料	氣象資料量小，非常合適
-4️⃣ 將資料寫入 SQLite
+URL = "https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/F-A0010-001?Authorization=CWA-1FFDDAEC-161F-46A3-BE71-93C32C52829F&downloadType=WEB&format=JSON"
 
-核心程式：
+def download_data():
+    r = requests.get(URL)
+    return r.json()
+
+def save_to_db(data):
+    try:
+        locations = data["cwaopendata"]["resources"]["resource"]["data"] \
+                        ["agrWeatherForecasts"]["weatherForecasts"]["location"]
+    except KeyError as e:
+        print("❌ JSON 結構不符:", e)
+        return
+
+    conn = sqlite3.connect("data.db")
+    cur = conn.cursor()
+
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS weather (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            location TEXT,
+            date TEXT,
+            min_temp REAL,
+            max_temp REAL,
+            description TEXT
+        )
+    """)
+
+    for loc in locations:
+        name = loc["locationName"]
+        wx_daily = loc["weatherElements"]["Wx"]["daily"]
+        max_daily = loc["weatherElements"]["MaxT"]["daily"]
+        min_daily = loc["weatherElements"]["MinT"]["daily"]
+
+        for i in range(len(wx_daily)):
+            date = wx_daily[i]["dataDate"]
+            weather = wx_daily[i]["weather"]
+            t_max = max_daily[i]["temperature"]
+            t_min = min_daily[i]["temperature"]
+
+            cur.execute(
+                "INSERT INTO weather (location, date, min_temp, max_temp, description) VALUES (?, ?, ?, ?, ?)",
+                (name, date, t_min, t_max, weather)
+            )
+
+    conn.commit()
+    conn.close()
+    print("✅ 資料已成功寫入 SQLite3！")
+
+if __name__ == "__main__":
+    data = download_data()
+    save_to_db(data)
+
+```
+
+---
+
+# 📊 7. Streamlit 前端介面 `app.py`
+
+以下是可運行的 Streamlit 程式：
+
+```python
+import sqlite3
+import pandas as pd
+import streamlit as st
+
+st.title("🌾 農業氣象查詢系統")
 
 conn = sqlite3.connect("data.db")
-cursor = conn.cursor()
+df = pd.read_sql_query("SELECT * FROM weather", conn)
 
-cursor.execute("""
-    INSERT INTO weather (region, date, weather, temp_low, temp_high)
-    VALUES (?, ?, ?, ?, ?)
-""", (name, date, weather, t_min, t_max))
+locations = df["location"].unique()
+selected_loc = st.selectbox("選擇地區", locations)
 
-conn.commit()
+result = df[df["location"] == selected_loc]
 
-⭐ 功能說明：
+st.subheader(f"📍 {selected_loc} 的天氣預報")
+st.table(result)
 
-逐筆將預報資料寫入資料庫
+```
 
-使用 parameterized SQL（安全）
+---
 
-存入後可直接被 Streamlit 讀取
+# 🌱 8. 系統對農業的實際應用價值
 
-5️⃣ Streamlit 前端介面（app.py）
-(1) 下拉式選單
-regions = sorted(df["region"].unique())
-choice = st.selectbox("選擇地區", regions)
+## ⭐ 1. **協助灌溉排程**
 
+透過每日最高、最低溫及天氣狀態，農民可判斷是否需加強或減少灌溉，避免因降雨或高溫造成作物水分失衡。
 
-✔ 動態讀取所有地區
-✔ 自動提供選擇項
+## ⭐ 2. **病蟲害預警**
 
-(2) 顯示資料表格
-st.dataframe(df_sel, height=300)
+潮濕、多雨天氣容易引起病害（如真菌感染），系統提供的每日天氣能協助農民提前施作防治措施。
 
+## ⭐ 3. **採收與作業規劃**
 
-✔ 顯示該地區 7 天預報
-✔ 使用者可點選排序或放大
+農民可依預測的晴雨狀況安排：
 
-(3) 曲線圖（最高/最低溫）
-line_chart = alt.Chart(df_sel)...
-st.altair_chart(line_chart)
+- 採收作業
+- 除草
+- 施肥
+- 農藥噴灑
 
+降低因天候不佳造成的損失。
 
-✔ 顯示最高溫/最低溫曲線
-✔ 可看到溫度趨勢、是否上升或下降
+## ⭐ 4. **作物生長模型與智慧農業整合**
 
-(4) 天氣摘要
-for _, row in df_sel.iterrows():
-    st.write(f"{row['date']}：{row['weather']}（{row['temp_low']}~{row['temp_high']}°C）")
+資料庫格式化後，可進一步與：
 
+- 自動化溫室控制
+- AI 生長模型
+- 遙測資料
 
-✔ 文字描述每日天氣
+整合成智慧農業決策系統。
 
-🌱 六、此系統對農業的實際應用價值
+## ⭐ 5. **區域農業風險評估**
 
-本系統屬於 農業氣象決策輔助平台（Agricultural Weather DSS） 的雛型，
-能直接協助農民做以下判斷：
+提供不同縣市的溫度差異，協助農民選擇適作作物品種、安排播種期。
 
-1️⃣ 防止低溫造成作物凍害
+---
 
-溫度曲線圖可看到：
+# 📘 9. 結論
 
-是否接近 霜凍臨界溫度 12°C
+本系統成功整合中央氣象局資料 API，使用 SQLite3 儲存並可視化天氣資訊。透過 Streamlit，使用者可快速查詢各地天氣，對農業決策具有高度實用價值。
 
-檢測 連續低溫天數
+未來可加入：
 
-協助決定是否啟動防寒措施（覆蓋布、灌溉保溫）
+- 氣象圖表（折線圖、熱力圖）
+- 自動排程每天更新
+- 與農機 IoT 整合
+- 氣象災害告警功能
 
-2️⃣ 降雨與病害預測
-
-天氣描述（例如「短暫雨」）可用來預測：
-
-某些作物（例如番茄、瓜類）在濕冷環境病害上升
-
-稻作可能受雨延遲施肥
-
-調整藥劑噴灑時機，避免白噴造成浪費
-
-3️⃣ 協助灌溉排程
-
-透過溫度與天氣變化可以：
-
-判斷是否需要提前灌溉
-
-避免大雨前澆水
-
-減少水資源浪費
-
-4️⃣ 收穫 / 播種時程調整
-
-哪一天溫度最高？
-哪一天雨勢較小？
-
-這些都可以從系統清楚看出，農民可決定：
-
-收穫日（避免雨天）
-
-播種日（選擇晴天溫暖時段）
-
-避免低溫或強風日搬運作物
-
-5️⃣ 改善農作業計畫效率
-
-整體來說，本系統讓農民快速得到：
-
-近一週天氣變化
-
-高溫 / 低溫趨勢
-
-雨天或壞天氣提醒
-
-相比傳統看電視、看大量文字預報，
-「視覺化曲線 + 下拉選單 + 數據表格」更易於判讀。
-
-📝 七、結論
-
-本系統整合：
-
-中央氣象局開放資料
-
-SQLite 資料庫
-
-Streamlit 互動式網頁
-
-成功提供：
-
-資料自動下載
-
-資料庫化管理
-
-即時視覺化查詢
-
-區域化氣象資訊
-
-並且在農業應用上具有高度價值，
-可以有效協助農民做 逐日作業判斷、災害提前應對與田間管理排程。
+以強化完整的智慧農業生態系統。
