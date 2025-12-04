@@ -39,7 +39,7 @@ https://github.com/user-attachments/assets/b35dd9d9-2101-4d9c-a9ff-506bf4c1f167
 | --- | --- |
 | CWA 官網溫度觀測頁 | https://www.cwa.gov.tw/V8/C/W/OBS_Temp.html |
 | CWA OpenData 登入頁 | https://opendata.cwa.gov.tw/userLogin |
-| API Key | `CWA-1FFDDAEC-161F-46A3-BE71-93C32C52829F` |
+| API Key | `請填上私人API` |
 | JSON 資料集 | https://opendata.cwa.gov.tw/dataset/forecast/F-A0010-001 |
 | 下載 API（本系統使用） | https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/F-A0010-001?Authorization=CWA-1FFDDAEC-161F-46A3-BE71-93C32C52829F&downloadType=WEB&format=JSON |
 
@@ -183,6 +183,10 @@ if __name__ == "__main__":
     save_to_db(data)
 
 ```
+
+
+https://github.com/user-attachments/assets/90368d59-a1b3-4053-9c02-584c4497ac75
+
 
 ---
 
