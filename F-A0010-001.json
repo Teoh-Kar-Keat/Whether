@@ -1,0 +1,1134 @@
+{
+ "cwaopendata": {
+  "@xmlns": "urn:cwa:gov:tw:cwacommon:0.1",
+  "identifier": "472c7047-eb48-4aa1-8fc0-9be46a234889",
+  "datasetName": "一週農業氣象預報",
+  "dataid": "F-A0010-001",
+  "sender": "shchiang@cwa.gov.tw",
+  "sent": "2025-12-03T18:00:06+08:00",
+  "status": "Actual",
+  "scope": "Public",
+  "msgType": "Issue",
+  "resources": {
+   "resource": {
+    "metadata": {
+     "resourceName": "中央氣象署氣候服務_農業氣象一週預報",
+     "resourceDescription": "提供氣象署預報資料和農事建議，供農業相關單位及農民參考",
+     "language": "zh",
+     "homepage": "https://www.cwa.gov.tw/V8/C/L/agriculture.html",
+     "sources": {
+      "source": [
+       {
+        "title": "1週預報",
+        "path": "https://www.cwa.gov.tw/V8/C/W/week.html"
+       },
+       {
+        "title": "長期天氣預報-季長期天氣展望",
+        "path": "https://www.cwa.gov.tw/Data/fcst_pdf/FW15.pdf"
+       }
+      ]
+     },
+     "temporal": {
+      "issueTime": "2025-12-03T17:00:00+08:00",
+      "validTime": {
+       "startTime": "2025-12-04T00:00:00+08:00",
+       "endTime": "2025-12-11T00:00:00+08:00"
+      }
+     },
+     "weatherElements": {
+      "weatherElement": [
+       {
+        "tagName": "weather",
+        "description": "天氣描述"
+       },
+       {
+        "tagName": "temperature",
+        "description": "氣溫",
+        "units": "˚C"
+       },
+       {
+        "tagName": "agrWeatherForecasts",
+        "description": "一週農業天氣預報"
+       },
+       {
+        "tagName": "weatherProfile",
+        "description": "天氣概況"
+       },
+       {
+        "tagName": "weatherForecasts",
+        "description": "天氣預報"
+       },
+       {
+        "tagName": "agrAdvices",
+        "description": "農事建議"
+       },
+       {
+        "tagName": "degreeDay",
+        "description": "度日(植物發育時所需之有效溫度單位)",
+        "units": "GDD"
+       },
+       {
+        "tagName": "accumulatedTemperature",
+        "description": "積溫(植物發育過程中，當各生育階段有效溫度累積至一定數值時，即可完成發育。該數值即稱為此一發育階段所需的積溫。)"
+       },
+       {
+        "tagName": "cardinalTemperatures",
+        "description": "作物生長溫度區間",
+        "units": "˚C",
+        "statisticalMethods": {
+         "statisticalMethod": [
+          {
+           "methodTagName": "minimum",
+           "description": "生長最低溫"
+          },
+          {
+           "methodTagName": "maximum",
+           "description": "生長最高溫"
+          },
+          {
+           "methodTagName": "optimum",
+           "description": "生長最適溫"
+          }
+         ]
+        }
+       },
+       {
+        "tagName": "growingDays",
+        "description": "生育日數"
+       },
+       {
+        "tagName": "cropStatistics",
+        "description": "農業積溫統計"
+       }
+      ]
+     }
+    },
+    "data": {
+     "agrWeatherForecasts": {
+      "weatherProfile": "4日、5日東北季風影響,北部、東北部及東部天氣較涼,其他地區早晚亦涼;4日基隆北海岸及東北部地區有局部短暫雨,東部、東南部地區、恆春半島及大臺北、中南部山區有零星短暫雨,其他地區為多雲到晴;5日基隆北海岸、東北部地區及大臺北山區有局部短暫雨,桃園以北、東部、東南部地區及恆春半島有零星短暫雨,其他地區為多雲到晴。6日、7日東北季風稍減弱,各地氣溫逐漸回升,早晚仍較涼,中南部日夜溫差大;各地大多為晴到多雲,僅基隆北海岸、大臺北山區、東半部地區及恆春半島有零星短暫雨。8日東北季風增強,9日東北季風影響,北部及東北部天氣稍轉涼,其他地區早晚亦涼;桃園以北、東半部地區及恆春半島有局部短暫雨,其他地區為多雲到晴。10日東北季風減弱,各地氣溫回升;各地大多為多雲到晴,僅基隆北海岸、大臺北山區、東半部地區及恆春半島有零星短暫雨。",
+      "weatherForecasts": {
+       "location": [
+        {
+         "locationName": "北部地區",
+         "weatherElements": {
+          "Wx": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "weather": "多雲時晴",
+             "weatherid": "3"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "weather": "多雲短暫雨",
+             "weatherid": "8"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "weather": "多雲時晴",
+             "weatherid": "3"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "weather": "多雲短暫雨",
+             "weatherid": "8"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "weather": "多雲短暫雨",
+             "weatherid": "8"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            }
+           ]
+          },
+          "MaxT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "21"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "23"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "24"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "26"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "23"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "23"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "26"
+            }
+           ]
+          },
+          "MinT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "15"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "15"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "15"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "15"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "16"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "17"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "16"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "locationName": "中部地區",
+         "weatherElements": {
+          "Wx": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            }
+           ]
+          },
+          "MaxT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "25"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "26"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "26"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "27"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "26"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "26"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "28"
+            }
+           ]
+          },
+          "MinT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "15"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "16"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "16"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "16"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "16"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "17"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "17"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "locationName": "南部地區",
+         "weatherElements": {
+          "Wx": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            }
+           ]
+          },
+          "MaxT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "25"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "26"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "27"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "28"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "27"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "27"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "29"
+            }
+           ]
+          },
+          "MinT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "16"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "18"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "18"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "18"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "19"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "19"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "19"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "locationName": "東北部地區",
+         "weatherElements": {
+          "Wx": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "weather": "陰短暫雨",
+             "weatherid": "11"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "weather": "陰短暫雨",
+             "weatherid": "11"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "weather": "陰時多雲短暫雨",
+             "weatherid": "10"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "weather": "多雲短暫雨",
+             "weatherid": "8"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "weather": "陰短暫雨",
+             "weatherid": "11"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "weather": "多雲時陰短暫雨",
+             "weatherid": "9"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "weather": "多雲短暫雨",
+             "weatherid": "8"
+            }
+           ]
+          },
+          "MaxT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "19"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "20"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "22"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "25"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "21"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "22"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "24"
+            }
+           ]
+          },
+          "MinT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "16"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "17"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "17"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "18"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "18"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "18"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "18"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "locationName": "東部地區",
+         "weatherElements": {
+          "Wx": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "weather": "陰時多雲",
+             "weatherid": "6"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "weather": "陰時多雲短暫雨",
+             "weatherid": "10"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "weather": "多雲時陰",
+             "weatherid": "5"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "weather": "多雲時晴",
+             "weatherid": "3"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "weather": "多雲時陰短暫雨",
+             "weatherid": "9"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "weather": "多雲時陰短暫雨",
+             "weatherid": "9"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "weather": "多雲時晴",
+             "weatherid": "3"
+            }
+           ]
+          },
+          "MaxT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "20"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "21"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "23"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "25"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "24"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "23"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "24"
+            }
+           ]
+          },
+          "MinT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "17"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "19"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "19"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "19"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "20"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "20"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "20"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "locationName": "東南部地區",
+         "weatherElements": {
+          "Wx": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "weather": "多雲時陰",
+             "weatherid": "5"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "weather": "多雲時晴",
+             "weatherid": "3"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "weather": "多雲",
+             "weatherid": "4"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "weather": "多雲時晴",
+             "weatherid": "3"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "weather": "多雲",
+             "weatherid": "4"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "weather": "多雲",
+             "weatherid": "4"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "weather": "晴時多雲",
+             "weatherid": "2"
+            }
+           ]
+          },
+          "MaxT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "22"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "23"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "24"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "26"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "26"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "24"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "26"
+            }
+           ]
+          },
+          "MinT": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "temperature": "18"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "temperature": "19"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "temperature": "19"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "temperature": "20"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "temperature": "20"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "temperature": "20"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "temperature": "20"
+            }
+           ]
+          }
+         }
+        }
+       ]
+      },
+      "agrAdvices": {
+       "agrForecasts": {
+        "location": [
+         {
+          "locationName": "北部地區",
+          "weatherElements": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "degreeDay": "8.0",
+             "accumulatedTemperature": "8.0"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "degreeDay": "9.0",
+             "accumulatedTemperature": "17.0"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "degreeDay": "9.5",
+             "accumulatedTemperature": "26.5"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "degreeDay": "10.5",
+             "accumulatedTemperature": "37.0"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "degreeDay": "9.5",
+             "accumulatedTemperature": "46.5"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "degreeDay": "10.0",
+             "accumulatedTemperature": "56.5"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "degreeDay": "11.0",
+             "accumulatedTemperature": "67.5"
+            }
+           ]
+          }
+         },
+         {
+          "locationName": "中部地區",
+          "weatherElements": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "degreeDay": "10.0",
+             "accumulatedTemperature": "10.0"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "degreeDay": "11.0",
+             "accumulatedTemperature": "21.0"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "degreeDay": "11.0",
+             "accumulatedTemperature": "32.0"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "degreeDay": "11.5",
+             "accumulatedTemperature": "43.5"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "degreeDay": "11.0",
+             "accumulatedTemperature": "54.5"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "degreeDay": "11.5",
+             "accumulatedTemperature": "66.0"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "degreeDay": "12.5",
+             "accumulatedTemperature": "78.5"
+            }
+           ]
+          }
+         },
+         {
+          "locationName": "南部地區",
+          "weatherElements": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "degreeDay": "10.5",
+             "accumulatedTemperature": "10.5"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "degreeDay": "12.0",
+             "accumulatedTemperature": "22.5"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "degreeDay": "12.5",
+             "accumulatedTemperature": "35.0"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "degreeDay": "13.0",
+             "accumulatedTemperature": "48.0"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "degreeDay": "13.0",
+             "accumulatedTemperature": "61.0"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "degreeDay": "13.0",
+             "accumulatedTemperature": "74.0"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "degreeDay": "14.0",
+             "accumulatedTemperature": "88.0"
+            }
+           ]
+          }
+         },
+         {
+          "locationName": "東北部地區",
+          "weatherElements": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "degreeDay": "7.5",
+             "accumulatedTemperature": "7.5"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "degreeDay": "8.5",
+             "accumulatedTemperature": "16.0"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "degreeDay": "9.5",
+             "accumulatedTemperature": "25.5"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "degreeDay": "11.5",
+             "accumulatedTemperature": "37.0"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "degreeDay": "9.5",
+             "accumulatedTemperature": "46.5"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "degreeDay": "10.0",
+             "accumulatedTemperature": "56.5"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "degreeDay": "11.0",
+             "accumulatedTemperature": "67.5"
+            }
+           ]
+          }
+         },
+         {
+          "locationName": "東部地區",
+          "weatherElements": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "degreeDay": "8.5",
+             "accumulatedTemperature": "8.5"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "degreeDay": "10.0",
+             "accumulatedTemperature": "18.5"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "degreeDay": "11.0",
+             "accumulatedTemperature": "29.5"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "degreeDay": "12.0",
+             "accumulatedTemperature": "41.5"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "degreeDay": "12.0",
+             "accumulatedTemperature": "53.5"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "degreeDay": "11.5",
+             "accumulatedTemperature": "65.0"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "degreeDay": "12.0",
+             "accumulatedTemperature": "77.0"
+            }
+           ]
+          }
+         },
+         {
+          "locationName": "東南部地區",
+          "weatherElements": {
+           "daily": [
+            {
+             "dataDate": "2025-12-04",
+             "degreeDay": "10.0",
+             "accumulatedTemperature": "10.0"
+            },
+            {
+             "dataDate": "2025-12-05",
+             "degreeDay": "11.0",
+             "accumulatedTemperature": "21.0"
+            },
+            {
+             "dataDate": "2025-12-06",
+             "degreeDay": "11.5",
+             "accumulatedTemperature": "32.5"
+            },
+            {
+             "dataDate": "2025-12-07",
+             "degreeDay": "13.0",
+             "accumulatedTemperature": "45.5"
+            },
+            {
+             "dataDate": "2025-12-08",
+             "degreeDay": "13.0",
+             "accumulatedTemperature": "58.5"
+            },
+            {
+             "dataDate": "2025-12-09",
+             "degreeDay": "12.0",
+             "accumulatedTemperature": "70.5"
+            },
+            {
+             "dataDate": "2025-12-10",
+             "degreeDay": "13.0",
+             "accumulatedTemperature": "83.5"
+            }
+           ]
+          }
+         }
+        ]
+       },
+       "cropStatistics": {
+        "crop": {
+         "cropName": "水稻",
+         "cardinalTemperatures": {
+          "growingStage": {
+           "description": "稻作生長溫度",
+           "minimum": "10",
+           "maximum": "40"
+          }
+         },
+         "location": [
+          {
+           "locationName": "臺中地區",
+           "cropBreed": "臺農67號",
+           "statistics": {
+            "fifteenYears": {
+             "description": "二期稻作生育日數及生育期總積溫(15年平均值)",
+             "timePeriod": [
+              {
+               "description": "插秧至抽穗",
+               "growingDays": "66",
+               "accumulatedTemperature": "1203.35"
+              },
+              {
+               "description": "插秧至收穫",
+               "growingDays": "107",
+               "accumulatedTemperature": "1794.83"
+              }
+             ]
+            },
+            "thisYear": {
+             "description": "114年二期稻作積溫值 (各改良場豐歉試驗臺農67號)",
+             "dibblingDate": "2025-08-11",
+             "timePeriod": {
+              "description": "插秧至本日",
+              "startDate": "2025-08-11",
+              "endDate": "2025-12-02",
+              "growingDays": "114",
+              "accumulatedTemperature": "1981.9"
+             }
+            }
+           }
+          },
+          {
+           "locationName": "高雄地區",
+           "cropBreed": "臺農67號",
+           "statistics": {
+            "fifteenYears": {
+             "description": "二期稻作生育日數及生育期總積溫(15年平均值)",
+             "timePeriod": [
+              {
+               "description": "插秧至抽穗",
+               "growingDays": "71",
+               "accumulatedTemperature": "1346.24"
+              },
+              {
+               "description": "插秧至收穫",
+               "growingDays": "104",
+               "accumulatedTemperature": "1922.81"
+              }
+             ]
+            },
+            "thisYear": {
+             "description": "114年二期稻作積溫值 (各改良場豐歉試驗臺農67號)",
+             "dibblingDate": "2025-07-23",
+             "timePeriod": {
+              "description": "插秧至本日",
+              "startDate": "2025-07-23",
+              "endDate": "2025-12-02",
+              "growingDays": "133",
+              "accumulatedTemperature": "2282.35"
+             }
+            }
+           }
+          },
+          {
+           "locationName": "花蓮地區",
+           "cropBreed": "臺農67號",
+           "statistics": {
+            "fifteenYears": {
+             "description": "二期稻作生育日數及生育期總積溫(15年平均值)",
+             "timePeriod": [
+              {
+               "description": "插秧至抽穗",
+               "growingDays": "71",
+               "accumulatedTemperature": "1184.31"
+              },
+              {
+               "description": "插秧至收穫",
+               "growingDays": "119",
+               "accumulatedTemperature": "1778.01"
+              }
+             ]
+            },
+            "thisYear": {
+             "description": "114年二期稻作積溫值 (各改良場豐歉試驗臺農67號)",
+             "dibblingDate": "2025-08-21",
+             "timePeriod": {
+              "description": "插秧至本日",
+              "startDate": "2025-08-21",
+              "endDate": "2025-12-02",
+              "growingDays": "104",
+              "accumulatedTemperature": "1695.05"
+             }
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
