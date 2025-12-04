@@ -7,7 +7,11 @@
 本系統特別適用於農業領域，使農民能清楚掌握天氣趨勢，協助調整灌溉、施肥、採收、病蟲害防治等重要農務決策。
 
 【APP.py 程式內包含透過API抓取資料，從json格式的資料讀取並建立資料庫(.db)，並部署在本地 Streamlit App 的整套流程】
+ 
+ 
  開發流程 ： https://github.com/Teoh-Kar-Keat/Whether/blob/main/Chat_with_gpt.pdf
+
+ 
 ---
 
 # 📦 2. 系統整體架構
